@@ -6,6 +6,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { ComponentsModule } from './components/components.module';
 import { PagesModule } from './pages/pages.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -15,7 +22,15 @@ import { PagesModule } from './pages/pages.module';
     BrowserModule,
     ComponentsModule,
     PagesModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+
+    MatCardModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatInputModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
