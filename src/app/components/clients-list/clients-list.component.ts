@@ -10,8 +10,13 @@ export class ClientsListComponent {
   @Input() public clients: Client[] = [];
   @Input() public filteredClients: Client[] = [];
   @Output() public openDialog = new EventEmitter<Client>();
+  @Output() public selectedClient = new EventEmitter<string>();
 
   onOpenDialog(client: Client) {
     this.openDialog.emit(client);
+  }
+
+  onAddClientToList(clientId: string) {
+    this.selectedClient.emit(clientId);
   }
 }

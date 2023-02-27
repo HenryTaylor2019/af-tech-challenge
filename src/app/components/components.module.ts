@@ -7,6 +7,8 @@ import { SearchComponent } from './search/search.component';
 import { HeaderComponent } from './header/header.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     HeaderComponent,
     DialogComponent,
   ],
-  imports: [CommonModule, MatDialogModule],
+  imports: [CommonModule, MatDialogModule, MatFormFieldModule, MatButtonModule],
   exports: [
     ClientsListComponent,
     ClientComponent,

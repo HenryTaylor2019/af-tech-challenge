@@ -33,4 +33,11 @@
         border-radius: 50%;
       }
 
+      &__actions {
+        display: flex;
+        flex-direction: column;
+        width: 9em;
+        gap: 1em;
+      }
+
 }
