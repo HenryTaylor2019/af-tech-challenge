@@ -12,7 +12,7 @@ export class ClientComponent {
   @Output() public selectedClient = new EventEmitter<string>();
 
   onModalClick(client: Client): void {
-    this.openDialog.emit(client);
+    console.log(this.client)
   }
 
   onAddClientToList(clientName: string): void {

@@ -1,10 +1,5 @@
 export interface Client {
     isSelected?: boolean;
-    cell: string;
-    dob: {
-        age: number;
-        date: string;
-    };
     email: string;
     gender: string;
     id: {
@@ -23,21 +18,15 @@ export interface Client {
         street: {};
         timezone: {};
     };
-    login: {};
     name: {
         first: string;
         last: string;
         title: string;
     };
-    nat: string;
     phone: string;
     picture: {
         large: string;
         medium: string;
         thumbnail: string;
-    };
-    registered: {
-        age: number;
-        date: string;
     };
 }

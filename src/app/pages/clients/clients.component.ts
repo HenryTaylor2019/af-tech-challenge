@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Client } from 'src/app/models/client.model';
 import { ClientsService } from 'src/app/services/clients.service';
-import { map } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 
 import {
   MatDialog,
@@ -9,6 +9,7 @@ import {
   MatDialogRef,
 } from '@angular/material/dialog';
 import { DialogComponent } from 'src/app/components/dialog/dialog.component';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-clients',
@@ -21,6 +22,7 @@ export class ClientsComponent implements OnInit {
   public clients: Client[] = [];
   public filteredClients: Client[] = [];
   public selectedClients = [];
+  public pageNumber: number
 
   constructor(
     private clientsService: ClientsService,
@@ -28,21 +30,21 @@ export class ClientsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.onGetClientData();
+    // this.onGetClientData();
   }
 
-  onGetClientData(): void {
-    this.clientsService
-      .fetchClients()
-      .pipe(
-        map((speakerData) => {
-          this.isFetching = false;
-          this.clients = speakerData[0];
-          this.filteredClients = speakerData[0];
-        })
-      )
-      .subscribe();
-  }
+  // onGetClientData(): void {
+  //   this.clientsService
+  //     .fetchClients()
+  //     .pipe(
+  //       map((speakerData) => {
+  //         this.isFetching = false;
+  //         this.clients = speakerData[0];
+  //         this.filteredClients = speakerData[0];
+  //       })
+  //     )
+  //     .subscribe();
+  // }
 
   onOpenDialog(client: Client) {
     const dialogRef = this.dialog.open(DialogComponent, {
@@ -72,6 +74,28 @@ export class ClientsComponent implements OnInit {
         this.clients.unshift(client);
       }
     });
+  }
+
+  onUpdateResults(paramsData: { results: number; pages: number }): void {
+    this.clientsService
+      .fetchClients(paramsData.results, paramsData.pages)
+      .pipe(
+        map((speakerData) => {
+          console.log(speakerData)
+          this.isFetching = false;
+          this.clients = speakerData[0];
+          this.filteredClients = speakerData[0];
+          this.pageNumber;
+        })
+      )
+      .subscribe();
+
+    // this.clientsService.updateResultsNumber(paramsData.results);
+    // this.clientsService.updatePageNumber(paramsData.pages);
+  }
+
+  onHandlePageEvent(event: PageEvent) {
+    console.log(event)
   }
 
   filterBySearch(eventData): void {

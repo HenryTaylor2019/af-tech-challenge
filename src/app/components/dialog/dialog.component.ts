@@ -5,7 +5,7 @@ import { Client } from 'src/app/models/client.model';
 @Component({
   selector: 'app-dialog',
   templateUrl: './dialog.component.html',
-  styleUrls: ['./dialog.component.scss']
+  styleUrls: ['./dialog.component.scss'],
 })
 export class DialogComponent {
   public clientData: Client;
@@ -13,7 +13,7 @@ export class DialogComponent {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: Client,
-    private dialogRef: MatDialogRef<DialogComponent>
+    public dialogRef: MatDialogRef<DialogComponent>
   ) {
     this.clientData = data;
   }

@@ -8,7 +8,11 @@ import { HeaderComponent } from './header/header.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +22,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     HeaderComponent,
     DialogComponent,
   ],
-  imports: [CommonModule, MatDialogModule, MatFormFieldModule, MatButtonModule],
+  imports: [
+    CommonModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    MatPaginatorModule,
+  ],
   exports: [
     ClientsListComponent,
     ClientComponent,

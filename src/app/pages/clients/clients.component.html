@@ -6,8 +6,12 @@
   <app-search
     [clients]="clients"
     (searchDataEvent)="filterBySearch($event)"
+    (paramsFormData)="onUpdateResults($event)"
   ></app-search>
   <h2 *ngIf="!filteredClients.length">No Search results</h2>
+
+
+
   <div class="container__actions">
     <app-clients-list
       *ngIf="filteredClients.length"
@@ -16,15 +20,16 @@
       [filteredClients]="filteredClients"
       (openDialog)="onOpenDialog($event)"
       (selectedClient)="onAddClientToList($event)"
+      (paginationData)="onHandlePageEvent($event)"
     ></app-clients-list>
 
-
     <app-clients-list
-    *ngIf="selectedClients.length"
-    listType="selected"
-    [filteredClients]="selectedClients"
-    (openDialog)="onOpenDialog($event)"
-    (selectedClient)="onRemoveClientFromList($event)"
-  ></app-clients-list>
+      *ngIf="selectedClients.length"
+      listType="selected"
+      [filteredClients]="selectedClients"
+      (openDialog)="onOpenDialog($event)"
+      (selectedClient)="onRemoveClientFromList($event)"
+      (paginationData)="onHandlePageEvent($event)"
+    ></app-clients-list>
   </div>
 </div>

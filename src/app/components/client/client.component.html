@@ -1,6 +1,6 @@
 <div class="container">
   <div class="container__card">
-    <div class="container__img-container">
+    <div class="container__img-container"   [ngClass]="{'container__selected': client.isSelected}">
       <img
         class="container__img"
         src="{{ client.picture.thumbnail }}"
@@ -21,26 +21,26 @@
           class="container__button"
           (click)="onModalClick(client)"
         >
-          See More
+          View Details
         </button>
 
         <button
-        mat-raised-button
-        color="primary"
-        (click)="onAddClientToList(client.name.last)"
-        *ngIf="!client.isSelected"
+          mat-raised-button
+          color="primary"
+          (click)="onAddClientToList(client.name.last)"
+          *ngIf="!client.isSelected"
         >
-        Add to List
-      </button>
+          Add to List
+        </button>
 
-      <button
-      mat-raised-button
-      color="warn"
-      (click)="onAddClientToList(client.name.last)"
-      *ngIf="client.isSelected"
-    >
-      Remove
-    </button>
+        <button
+          mat-raised-button
+          color="warn"
+          (click)="onAddClientToList(client.name.last)"
+          *ngIf="client.isSelected"
+        >
+          Remove
+        </button>
       </div>
     </div>
   </div>
