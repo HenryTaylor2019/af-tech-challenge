@@ -1,4 +1,5 @@
 export interface Client {
+    isSelected?: boolean;
     cell: string;
     dob: {
         age: number;

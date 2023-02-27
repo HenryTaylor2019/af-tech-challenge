@@ -22,7 +22,6 @@ export class ClientsComponent implements OnInit {
   public filteredClients: Client[] = [];
   public selectedClients = [];
 
-
   constructor(
     private clientsService: ClientsService,
     public dialog: MatDialog
@@ -46,18 +45,18 @@ export class ClientsComponent implements OnInit {
   }
 
   onOpenDialog(client: Client) {
-    const dialogRef =  this.dialog.open(DialogComponent, {
+    const dialogRef = this.dialog.open(DialogComponent, {
       data: client,
       height: 'auto',
       width: 'auto',
     });
   }
 
-
   onAddClientToList(clientName) {
     this.clients.map((client, i) => {
       if (clientName === client.name.last) {
         let selectedClient = client;
+        selectedClient.isSelected = true;
         this.clients.splice(i, 1);
         this.selectedClients.push(client);
       }
@@ -67,6 +66,8 @@ export class ClientsComponent implements OnInit {
   onRemoveClientFromList(clientName) {
     this.selectedClients.map((client, i) => {
       if (clientName === client.name.last) {
+        let unSelectedClient = client;
+        unSelectedClient.isSelected = false;
         this.selectedClients.splice(i, 1);
         this.clients.unshift(client);
       }

@@ -4,6 +4,12 @@
     border-radius: 5px;
     border: 1px solid black;
     min-width: 50%;
+
+    &__header {
+        padding: 1em;
+        background: rgb(82, 82, 198);
+        color: white;
+      }
   
     &__card-list {
       display: inline-flex;

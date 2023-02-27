@@ -28,9 +28,19 @@
         mat-raised-button
         color="primary"
         (click)="onAddClientToList(client.name.last)"
+        *ngIf="!client.isSelected"
         >
         Add to List
       </button>
+
+      <button
+      mat-raised-button
+      color="warn"
+      (click)="onAddClientToList(client.name.last)"
+      *ngIf="client.isSelected"
+    >
+      Remove
+    </button>
       </div>
     </div>
   </div>

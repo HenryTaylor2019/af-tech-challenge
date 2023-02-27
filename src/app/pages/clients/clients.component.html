@@ -11,6 +11,7 @@
   <div class="container__actions">
     <app-clients-list
       *ngIf="filteredClients.length"
+      listType="unselected"
       [clients]="clients"
       [filteredClients]="filteredClients"
       (openDialog)="onOpenDialog($event)"
@@ -20,6 +21,7 @@
 
     <app-clients-list
     *ngIf="selectedClients.length"
+    listType="selected"
     [filteredClients]="selectedClients"
     (openDialog)="onOpenDialog($event)"
     (selectedClient)="onRemoveClientFromList($event)"

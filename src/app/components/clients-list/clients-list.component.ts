@@ -7,6 +7,7 @@ import { Client } from 'src/app/models/client.model';
   styleUrls: ['./clients-list.component.scss']
 })
 export class ClientsListComponent {
+  @Input() public listType: string;
   @Input() public clients: Client[] = [];
   @Input() public filteredClients: Client[] = [];
   @Output() public openDialog = new EventEmitter<Client>();
