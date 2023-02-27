@@ -3,6 +3,13 @@ import { Client } from 'src/app/models/client.model';
 import { ClientsService } from 'src/app/services/clients.service';
 import { map } from 'rxjs/operators';
 
+import {
+  MatDialog,
+  MAT_DIALOG_DATA,
+  MatDialogRef,
+} from '@angular/material/dialog';
+import { DialogComponent } from 'src/app/components/dialog/dialog.component';
+
 @Component({
   selector: 'app-clients',
   templateUrl: './clients.component.html',
@@ -12,8 +19,10 @@ export class ClientsComponent implements OnInit {
   public clients: Client[] = [];
   public filteredClients: Client[] = [];
 
-
-  constructor(private clientsService: ClientsService) {}
+  constructor(
+    private clientsService: ClientsService,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.onGetClientData();
@@ -31,6 +40,13 @@ export class ClientsComponent implements OnInit {
       .subscribe();
   }
 
+  onOpenDialog(client: Client) {
+    const dialogRef =  this.dialog.open(DialogComponent, {
+      data: client,
+      height: 'auto',
+      width: 'auto',
+    });
+  }
 
   filterBySearch(eventData): void {
     let searchQuery = eventData.target.value;
@@ -43,5 +59,3 @@ export class ClientsComponent implements OnInit {
     });
   }
 }
-
-

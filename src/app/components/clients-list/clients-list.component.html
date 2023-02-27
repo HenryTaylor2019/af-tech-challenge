@@ -1,7 +1,10 @@
 <div class="container">
   <div class="container__card-list">
     <div *ngFor="let client of filteredClients">
-      <app-client [client]="client"></app-client>
+      <app-client
+        [client]="client"
+        (openDialog)="onOpenDialog($event)"
+      ></app-client>
     </div>
   </div>
 </div>

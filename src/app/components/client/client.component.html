@@ -1,20 +1,29 @@
 <div class="container">
-    <div class="container__card">
-      <div class="container__img-container">
-        <img
-          class="container__img"
-          src="{{ client.picture.thumbnail }}"
-          alt="thumbnail"
-        />
-      </div>
-  
-      <div class="container__content">
-        <h2 class="container__name">
-          {{ client.name.first }}
-          {{ client.name.last }}
-        </h2>
-  
+  <div class="container__card">
+    <div class="container__img-container">
+      <img
+        class="container__img"
+        src="{{ client.picture.thumbnail }}"
+        alt="thumbnail"
+      />
+    </div>
+
+    <div class="container__content">
+      <h2 class="container__name">
+        {{ client.name.first }}
+        {{ client.name.last }}
+      </h2>
+
+      <div class="container__actions">
+        <button
+          mat-raised-button
+          color="accent"
+          class="container__button"
+          (click)="onModalClick(client)"
+        >
+          See More
+        </button>
       </div>
     </div>
   </div>
-  
+</div>

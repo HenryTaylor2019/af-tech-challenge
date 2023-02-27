@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Client } from 'src/app/models/client.model';
 
 @Component({
@@ -8,4 +8,9 @@ import { Client } from 'src/app/models/client.model';
 })
 export class ClientComponent {
   @Input() public client: Client;
+  @Output() public openDialog = new EventEmitter<Client>();
+
+  onModalClick(client: Client): void {
+    this.openDialog.emit(client);
+  }
 }

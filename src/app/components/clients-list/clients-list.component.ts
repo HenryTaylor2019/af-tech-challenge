@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Client } from 'src/app/models/client.model';
 
 @Component({
@@ -9,5 +9,9 @@ import { Client } from 'src/app/models/client.model';
 export class ClientsListComponent {
   @Input() public clients: Client[] = [];
   @Input() public filteredClients: Client[] = [];
+  @Output() public openDialog = new EventEmitter<Client>();
 
+  onOpenDialog(client: Client) {
+    this.openDialog.emit(client);
+  }
 }

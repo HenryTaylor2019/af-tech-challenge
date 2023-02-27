@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    padding: 0;
+
+    &__content {
+        padding: 1em;
+    }
+
+    &__img-container {
+        height: auto;
+  
+
+    }
+  
+    &__img {
+        width: 250px;
+    }
+}
