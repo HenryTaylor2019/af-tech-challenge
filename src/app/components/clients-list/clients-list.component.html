@@ -1,1 +1,3 @@
-<app-client></app-client>
+<div *ngFor="let client of clients">
+  <app-client [client]="client"></app-client>
+</div>

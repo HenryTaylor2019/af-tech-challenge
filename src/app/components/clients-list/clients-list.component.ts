@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Client } from 'src/app/models/client.model';
 
 @Component({
   selector: 'app-clients-list',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./clients-list.component.scss']
 })
 export class ClientsListComponent {
+  @Input() public clients: Client[] = [];
 
 }

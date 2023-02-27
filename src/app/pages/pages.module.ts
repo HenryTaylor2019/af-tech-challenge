@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ClientsComponent } from './clients/clients.component';
+import { ComponentsModule } from '../components/components.module';
 
 
 
@@ -9,7 +10,8 @@ import { ClientsComponent } from './clients/clients.component';
     ClientsComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ComponentsModule,
   ],
   exports: [ClientsComponent]
 })
