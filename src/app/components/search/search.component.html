@@ -1,25 +1,12 @@
 <div class="container">
-    <label>Search</label>
-    <input
-      matInput
-      class="container__input"
-      name="search"
-      placeholder="Filter Client by Name"
-      (input)="submitSearch($event)"
-    />
-    <!-- <form action="">
-        label
-        <input type="number" id="results" name="results" min="1" max="30" (input)="onUpdateResults($event, 'results')"/>
-        <input type="number" id="pages" name="pages" min="1" max="5" (input)="onUpdatePageNumber($event, 'pages')"/>
-    </form> -->
-
-
- <form action="" [formGroup]="paramsForm" (submit)="onUpdateResults()">
-
-    <mat-form-field appearance="fill">
+  <div class="container__params">
+    <form action="" [formGroup]="paramsForm" (submit)="onUpdateResults()">
+      <mat-form-field appearance="fill">
         <mat-label>Results</mat-label>
         <mat-select formControlName="results">
-          <mat-option *ngFor="let option of options" [value]="option">{{option}}</mat-option>
+          <mat-option *ngFor="let option of options" [value]="option">{{
+            option
+          }}</mat-option>
         </mat-select>
         <!-- <mat-hint>Add the number of clients to display</mat-hint> -->
       </mat-form-field>
@@ -27,12 +14,23 @@
       <mat-form-field appearance="fill">
         <mat-label>Number of Pages</mat-label>
         <mat-select formControlName="pages">
-          <mat-option *ngFor="let option of options" [value]="option">{{option}}</mat-option>
+          <mat-option *ngFor="let option of options" [value]="option">{{
+            option
+          }}</mat-option>
         </mat-select>
         <!-- <mat-hint>Add the number of clients to display</mat-hint> -->
       </mat-form-field>
       <button mat-raised-button type="submit">Submit Application</button>
- </form>
-
+    </form>
   </div>
-  
+  <div class="container__search" *ngIf="clients.length">
+    <!-- <label>Search</label> -->
+    <input
+      matInput
+      class="container__input"
+      name="search"
+      placeholder="Filter Client by Name"
+      (input)="submitSearch($event)"
+    />
+  </div>
+</div>

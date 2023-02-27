@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Client } from 'src/app/models/client.model';
 
 @Component({
@@ -13,8 +13,8 @@ export class SearchComponent implements OnInit {
   @Output() public paramsFormData = new EventEmitter();
   public options = [1, 2, 3, 4, 5, 6, 7, 10, 100];
   public paramsForm = new FormGroup({
-    results: new FormControl(''),
-    pages: new FormControl(''),
+    results: new FormControl('', Validators.required),
+    pages: new FormControl('', Validators.required),
   })
 
   ngOnInit(): void {
@@ -26,7 +26,9 @@ export class SearchComponent implements OnInit {
   }
 
   onUpdateResults(): void {
-    this.paramsFormData.emit(this.paramsForm.value)
+    if(this.paramsForm.valid) {
+      this.paramsFormData.emit(this.paramsForm.value)
+    }
   }
 
   onUpdatePageNumber(inputData): void {}

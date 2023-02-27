@@ -11,7 +11,6 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { Observable } from 'rxjs';
 import { Client } from 'src/app/models/client.model';
 
-import {MatTableDataSource} from '@angular/material/table'
 
 @Component({
   selector: 'app-clients-list',
@@ -25,18 +24,9 @@ export class ClientsListComponent implements OnInit {
   @Output() public openDialog = new EventEmitter<Client>();
   @Output() public selectedClient = new EventEmitter<string>();
   @Output() public paginationData = new EventEmitter<PageEvent>();
-  public pageSize = 5;
 
-
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  obs: Observable<any>;
-  // Card is whatever type you use for your datasource, DATA is your data
-  dataSource: MatTableDataSource<Client> = new MatTableDataSource<Client>(this.filteredClients);
-  constructor(private changeDetectorRef: ChangeDetectorRef){}
   ngOnInit() {
-    this.changeDetectorRef.detectChanges();
-    this.dataSource.paginator = this.paginator;
-    this.obs = this.dataSource.connect();
+
   }
 
   onOpenDialog(client: Client) {

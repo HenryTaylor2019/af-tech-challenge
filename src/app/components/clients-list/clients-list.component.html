@@ -9,18 +9,12 @@
     </ng-template>
   </div>
   <div class="container__card-list">
-    <div *ngFor="let client of obs | async">
+    <div *ngFor="let client of filteredClients">
       <app-client
-        [client]="client |async"
+        [client]="client"
         (openDialog)="onOpenDialog($event)"
         (selectedClient)="onAddClientToList($event)"
       ></app-client>
     </div>
-
-    <mat-paginator
-      #paginator
-      [pageSizeOptions]="[5, 10, 25, 100]"
-    >
-    </mat-paginator>
   </div>
 </div>

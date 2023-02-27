@@ -6,6 +6,15 @@
     padding-bottom: 1em;
     gap: 2em;
 
+
+    &__search {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 2em;
+
+    }
+
     &__input {
         margin-top: -20px;
         padding: 0.7em 0.5em;

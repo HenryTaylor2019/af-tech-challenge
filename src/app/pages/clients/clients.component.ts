@@ -81,17 +81,12 @@ export class ClientsComponent implements OnInit {
       .fetchClients(paramsData.results, paramsData.pages)
       .pipe(
         map((speakerData) => {
-          console.log(speakerData)
           this.isFetching = false;
           this.clients = speakerData[0];
           this.filteredClients = speakerData[0];
-          this.pageNumber;
         })
       )
       .subscribe();
-
-    // this.clientsService.updateResultsNumber(paramsData.results);
-    // this.clientsService.updatePageNumber(paramsData.pages);
   }
 
   onHandlePageEvent(event: PageEvent) {
