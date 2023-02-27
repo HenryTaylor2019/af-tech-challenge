@@ -8,5 +8,6 @@ import { Client } from 'src/app/models/client.model';
 })
 export class ClientsListComponent {
   @Input() public clients: Client[] = [];
+  @Input() public filteredClients: Client[] = [];
 
 }

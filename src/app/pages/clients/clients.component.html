@@ -1,8 +1,12 @@
 <div class="container">
-
+    <app-search
+    [clients]="clients"
+    (searchDataEvent)="filterBySearch($event)"
+  ></app-search>
   <div class="container__actions">
     <app-clients-list
       [clients]="clients"
+      [filteredClients]="filteredClients"
     ></app-clients-list>
   </div>
 </div>

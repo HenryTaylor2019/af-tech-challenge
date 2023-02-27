@@ -1,1 +1,11 @@
-<p>search works!</p>
+<div class="container">
+    <label>Search</label>
+    <input
+      matInput
+      class="container__input"
+      name="search"
+      placeholder="Filter Client by Name"
+      (input)="submitSearch($event)"
+    />
+  </div>
+  

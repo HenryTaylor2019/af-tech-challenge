@@ -8,6 +8,6 @@ import { SearchComponent } from './search/search.component';
 @NgModule({
   declarations: [ClientsListComponent, ClientComponent, SearchComponent],
   imports: [CommonModule],
-  exports: [ClientsListComponent, ClientComponent],
+  exports: [ClientsListComponent, ClientComponent, SearchComponent],
 })
 export class ComponentsModule {}
