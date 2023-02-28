@@ -16,6 +16,7 @@ export class ClientsComponent implements OnInit {
   public filteredClients: Client[] = [];
   public selectedClients = [];
   public resultsOptions = [5, 10, 15, 20, 25];
+  public resultsToDisplay: number;
 
   constructor(
     private clientsService: ClientsService,
@@ -25,6 +26,7 @@ export class ClientsComponent implements OnInit {
   ngOnInit(): void {}
 
   onGetClientData(results: number): void {
+    this.resultsToDisplay = results
     this.isFetching = true
     this.clientsService
       .fetchClients(results)
@@ -45,6 +47,11 @@ export class ClientsComponent implements OnInit {
       width: 'auto',
     });
   }
+
+  onPageChange($event) { 
+    this.filteredClients.slice($event.pageIndex*$event.pageSize, $event.pageIndex*$event.pageSize + $event.pageSize);
+  }
+
 
   onAddClientToList(selectedClient) {
     this.filteredClients.map((client, i) => {

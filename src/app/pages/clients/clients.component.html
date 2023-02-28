@@ -20,6 +20,7 @@
       *ngIf="filteredClients.length"
       listType="unselected"
       [clients]="clients"
+      [pageSize]="resultsToDisplay"
       [filteredClients]="filteredClients"
       (openDialog)="onOpenDialog($event)"
       (selectedClient)="onAddClientToList($event)"

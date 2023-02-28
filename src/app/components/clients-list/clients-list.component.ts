@@ -19,18 +19,18 @@ import { Client } from 'src/app/models/client.model';
 })
 export class ClientsListComponent implements OnInit {
   @Input() public listType: string;
+  @Input() public pageSize: number
   @Input() public clients: Client[] = [];
   @Input() public filteredClients: Client[] = [];
   @Output() public openDialog = new EventEmitter<Client>();
   @Output() public selectedClient = new EventEmitter<Client>();
-  public currentItemsToShow: Client[] = [];
-
+  @Output() public currentItemsToShow = new EventEmitter<Client[]>()
+ 
   ngOnInit() {
-    this.currentItemsToShow = this.filteredClients;
   }
 
   onPageChange($event) {
-    this.currentItemsToShow = this.clients.slice($event.pageIndex*$event.pageSize, $event.pageIndex*$event.pageSize + $event.pageSize);
+    this.currentItemsToShow.emit($event)
   }
 
   onOpenDialog(client: Client) {
@@ -40,5 +40,4 @@ export class ClientsListComponent implements OnInit {
   onAddRemoveClient(client: Client) {
     this.selectedClient.emit(client);
   }
-
 }
