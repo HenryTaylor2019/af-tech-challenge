@@ -18,36 +18,33 @@ import { PageEvent } from '@angular/material/paginator';
 })
 export class ClientsComponent implements OnInit {
   public isFetching: boolean;
-
   public clients: Client[] = [];
   public filteredClients: Client[] = [];
   public selectedClients = [];
-  public pageNumber: number
+  public resultsOptions = [5, 10, 15, 20, 25];
 
   constructor(
     private clientsService: ClientsService,
     public dialog: MatDialog
   ) {}
 
-  ngOnInit(): void {
-    // this.onGetClientData();
+  ngOnInit(): void {}
+
+  onGetClientData(results: number): void {
+    this.clientsService
+      .fetchClients(results)
+      .pipe(
+        map((speakerData) => {
+          this.isFetching = false;
+          this.clients = speakerData[0];
+          this.filteredClients = speakerData[0];
+        })
+      )
+      .subscribe();
   }
 
-  // onGetClientData(): void {
-  //   this.clientsService
-  //     .fetchClients()
-  //     .pipe(
-  //       map((speakerData) => {
-  //         this.isFetching = false;
-  //         this.clients = speakerData[0];
-  //         this.filteredClients = speakerData[0];
-  //       })
-  //     )
-  //     .subscribe();
-  // }
-
   onOpenDialog(client: Client) {
-    const dialogRef = this.dialog.open(DialogComponent, {
+    this.dialog.open(DialogComponent, {
       data: client,
       height: 'auto',
       width: 'auto',
@@ -60,7 +57,7 @@ export class ClientsComponent implements OnInit {
         let selectedClient = client;
         selectedClient.isSelected = true;
         this.clients.splice(i, 1);
-        this.selectedClients.push(client);
+        this.selectedClients.unshift(client);
       }
     });
   }
@@ -76,30 +73,14 @@ export class ClientsComponent implements OnInit {
     });
   }
 
-  onUpdateResults(paramsData: { results: number; pages: number }): void {
-    this.clientsService
-      .fetchClients(paramsData.results, paramsData.pages)
-      .pipe(
-        map((speakerData) => {
-          this.isFetching = false;
-          this.clients = speakerData[0];
-          this.filteredClients = speakerData[0];
-        })
-      )
-      .subscribe();
-  }
-
-  onHandlePageEvent(event: PageEvent) {
-    console.log(event)
-  }
-
   filterBySearch(eventData): void {
     let searchQuery = eventData.target.value;
-
-    this.filteredClients = this.clients.filter((speaker) => {
+    this.filteredClients = this.clients.filter((client) => {
+      let firstName = client.name.first.toLocaleLowerCase();
+      let lastName = client.name.last.toLocaleLowerCase();
       return (
-        speaker.name.first.toLocaleLowerCase().includes(searchQuery) ||
-        speaker.name.last.toLocaleLowerCase().includes(searchQuery)
+        firstName.includes(searchQuery.toLowerCase()) ||
+        lastName.includes(searchQuery.toLowerCase())
       );
     });
   }

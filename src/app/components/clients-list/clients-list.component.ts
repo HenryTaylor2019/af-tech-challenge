@@ -23,7 +23,6 @@ export class ClientsListComponent implements OnInit {
   @Input() public filteredClients: Client[] = [];
   @Output() public openDialog = new EventEmitter<Client>();
   @Output() public selectedClient = new EventEmitter<string>();
-  @Output() public paginationData = new EventEmitter<PageEvent>();
 
   ngOnInit() {
 
@@ -37,7 +36,4 @@ export class ClientsListComponent implements OnInit {
     this.selectedClient.emit(clientId);
   }
 
-  handlePageEvent(event: PageEvent) {
-    this.paginationData.emit(event);
-  }
 }

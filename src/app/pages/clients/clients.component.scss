@@ -1,7 +1,14 @@
 .container {
     padding: 2em;
+
+    &__search {
+      display: flex;
+      width: 100%;
+      gap: 2em;
+      margin-bottom: 1em;
+    }
   
-    &__actions {
+    &__clients-list {
       display: flex;
       width: 100%;
       gap: 2em;

@@ -1,36 +1,38 @@
 <div class="container">
-  <div class="container__params">
-    <form action="" [formGroup]="paramsForm" (submit)="onUpdateResults()">
-      <mat-form-field appearance="fill">
-        <mat-label>Results</mat-label>
-        <mat-select formControlName="results">
-          <mat-option *ngFor="let option of options" [value]="option">{{
-            option
-          }}</mat-option>
-        </mat-select>
-        <!-- <mat-hint>Add the number of clients to display</mat-hint> -->
-      </mat-form-field>
+  <ng-template *ngIf="resultsValue > 50">
+    <p>Sorry. You can only request up to 50 clients</p>
+  </ng-template>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Number of Pages</mat-label>
-        <mat-select formControlName="pages">
-          <mat-option *ngFor="let option of options" [value]="option">{{
-            option
-          }}</mat-option>
-        </mat-select>
-        <!-- <mat-hint>Add the number of clients to display</mat-hint> -->
-      </mat-form-field>
-      <button mat-raised-button type="submit">Submit Application</button>
-    </form>
+  <div class="container__params">
+    <mat-form-field appearance="fill" subscriptSizing="dynamic">
+      <mat-label>Results</mat-label>
+      <mat-select [(ngModel)]="resultsValue">
+        <mat-option *ngFor="let result of resultsOptions" [value]="result">
+          {{ result }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
+
+  <button
+    mat-raised-button
+    type="submit"
+    [disabled]="resultsValue > 50"
+    (click)="onUpdateResults()"
+  >
+    Show Results
+  </button>
   <div class="container__search" *ngIf="clients.length">
-    <!-- <label>Search</label> -->
-    <input
-      matInput
-      class="container__input"
-      name="search"
-      placeholder="Filter Client by Name"
-      (input)="submitSearch($event)"
-    />
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Filter </mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Filter by name"
+          (input)="submitSearch($event)"
+        />
+      </mat-form-field>
+    </form>
   </div>
 </div>

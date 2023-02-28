@@ -9,27 +9,18 @@ import { Client } from 'src/app/models/client.model';
 })
 export class SearchComponent implements OnInit {
   @Input() public clients: Client[] = [];
+  @Input() public resultsOptions: number[];
   @Output() public searchDataEvent = new EventEmitter();
   @Output() public paramsFormData = new EventEmitter();
-  public options = [1, 2, 3, 4, 5, 6, 7, 10, 100];
-  public paramsForm = new FormGroup({
-    results: new FormControl('', Validators.required),
-    pages: new FormControl('', Validators.required),
-  })
+  public resultsValue: number;
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
 
   submitSearch(searchTerm): void {
     this.searchDataEvent.emit(searchTerm);
   }
 
   onUpdateResults(): void {
-    if(this.paramsForm.valid) {
-      this.paramsFormData.emit(this.paramsForm.value)
-    }
+    this.paramsFormData.emit(this.resultsValue);
   }
-
-  onUpdatePageNumber(inputData): void {}
 }

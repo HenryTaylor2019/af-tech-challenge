@@ -11,7 +11,9 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatOptionModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -27,9 +29,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatDialogModule,
     MatFormFieldModule,
     MatButtonModule,
+    MatOptionModule,
     MatSelectModule,
+    MatInputModule,
     ReactiveFormsModule,
     MatPaginatorModule,
+    FormsModule
   ],
   exports: [
     ClientsListComponent,

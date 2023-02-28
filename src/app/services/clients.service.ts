@@ -8,10 +8,10 @@ import { map } from 'rxjs/operators';
 export class ClientsService {
   constructor(private http: HttpClient) {}
 
-  fetchClients(results?: number, pages?: number): any {
+  fetchClients(results?: number): any {
     return this.http
       .get<{ [key: string]: any }>(
-        `https://randomuser.me/api/?results=${results}&page=${pages}&inc=name,location,picture,email,phone`,
+        `https://randomuser.me/api/?results=${results}&inc=name,location,picture,email,phone`,
         {
           // params: new HttpParams().set('pageSize', pages).set('results', results).set('page', 4)
         }
