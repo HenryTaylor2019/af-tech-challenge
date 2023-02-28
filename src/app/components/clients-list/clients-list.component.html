@@ -9,11 +9,17 @@
     </ng-template>
   </div>
   <div class="container__card-list">
-    <div *ngFor="let client of filteredClients">
+    <mat-paginator 
+(page)="onPageChange($event)"
+[length]="100"
+              [pageSize]="5"
+              [pageSizeOptions]="[5, 10, 25]">
+</mat-paginator>
+    <div *ngFor="let client of currentItemsToShow">
       <app-client
         [client]="client"
         (openDialog)="onOpenDialog($event)"
-        (selectedClient)="onAddClientToList($event)"
+        (selectedClient)="onAddRemoveClient($event)"
       ></app-client>
     </div>
   </div>

@@ -1,10 +1,7 @@
 <app-header></app-header>
 <div class="container">
-  <h1>Welcome to Client Hub</h1>
   <h2>Please select number of clients to display</h2>
-  <div *ngIf="isFetching">
-    <h1>Loading</h1>
-  </div>
+
   <div class="container__search">
     <app-search
       [clients]="clients"
@@ -13,8 +10,10 @@
       (paramsFormData)="onGetClientData($event)"
     ></app-search>
   </div>
-
-  <h2 *ngIf="!filteredClients.length">No Search results</h2>
+  
+  <div *ngIf="isFetching">
+    <h1>Loading</h1>
+  </div>
 
   <div class="container__clients-list">
     <app-clients-list

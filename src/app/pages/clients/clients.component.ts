@@ -1,15 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Client } from 'src/app/models/client.model';
 import { ClientsService } from 'src/app/services/clients.service';
-import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
-
-import {
-  MatDialog,
-  MAT_DIALOG_DATA,
-  MatDialogRef,
-} from '@angular/material/dialog';
+import { map } from 'rxjs/operators';
+import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from 'src/app/components/dialog/dialog.component';
-import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-clients',
@@ -31,6 +25,7 @@ export class ClientsComponent implements OnInit {
   ngOnInit(): void {}
 
   onGetClientData(results: number): void {
+    this.isFetching = true
     this.clientsService
       .fetchClients(results)
       .pipe(
@@ -51,22 +46,20 @@ export class ClientsComponent implements OnInit {
     });
   }
 
-  onAddClientToList(clientName) {
-    this.clients.map((client, i) => {
-      if (clientName === client.name.last) {
-        let selectedClient = client;
-        selectedClient.isSelected = true;
-        this.clients.splice(i, 1);
+  onAddClientToList(selectedClient) {
+    this.filteredClients.map((client, i) => {
+      if (selectedClient.name === client.name) {
+        client.isSelected = true;
+        this.filteredClients.splice(i, 1);
         this.selectedClients.unshift(client);
       }
     });
   }
 
-  onRemoveClientFromList(clientName) {
+  onRemoveClientFromList(selectedClient) {
     this.selectedClients.map((client, i) => {
-      if (clientName === client.name.last) {
-        let unSelectedClient = client;
-        unSelectedClient.isSelected = false;
+      if (selectedClient.name === client.name) {
+        client.isSelected = false;
         this.selectedClients.splice(i, 1);
         this.clients.unshift(client);
       }

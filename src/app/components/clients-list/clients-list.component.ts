@@ -22,18 +22,23 @@ export class ClientsListComponent implements OnInit {
   @Input() public clients: Client[] = [];
   @Input() public filteredClients: Client[] = [];
   @Output() public openDialog = new EventEmitter<Client>();
-  @Output() public selectedClient = new EventEmitter<string>();
+  @Output() public selectedClient = new EventEmitter<Client>();
+  public currentItemsToShow: Client[] = [];
 
   ngOnInit() {
+    this.currentItemsToShow = this.filteredClients;
+  }
 
+  onPageChange($event) {
+    this.currentItemsToShow = this.clients.slice($event.pageIndex*$event.pageSize, $event.pageIndex*$event.pageSize + $event.pageSize);
   }
 
   onOpenDialog(client: Client) {
     this.openDialog.emit(client);
   }
 
-  onAddClientToList(clientId: string) {
-    this.selectedClient.emit(clientId);
+  onAddRemoveClient(client: Client) {
+    this.selectedClient.emit(client);
   }
 
 }
