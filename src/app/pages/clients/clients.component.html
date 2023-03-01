@@ -8,24 +8,14 @@
       (paramsFormData)="onGetClientData($event)"
     ></app-search>
   </div>
-  
-  <div class="container__clients-list">
+
+  <div class="container__clients-lists">
     <app-clients-list
       *ngIf="filteredClients.length"
       listType="unselected"
       [isFetching]="isFetching"
       [filteredClients]="filteredClients"
       (openDialog)="onOpenDialog($event)"
-      (selectedClient)="onAddClientToList($event)"
     ></app-clients-list>
-
-    <app-clients-list
-    *ngIf="selectedClients.length"
-    listType="selected"
-    [filteredClients]="selectedClients"
-    (openDialog)="onOpenDialog($event)"
-    (selectedClient)="onRemoveClientFromList($event)"
-  ></app-clients-list>
-
   </div>
 </div>

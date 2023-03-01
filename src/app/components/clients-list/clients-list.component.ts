@@ -17,15 +17,14 @@ export class ClientsListComponent {
   @Input() public listType: string;
   @Input() public isFetching: boolean;
   @Input() public filteredClients: Client[] = [];
-  @Input() public selectedClients: Client[] = [];
   @Output() public openDialog = new EventEmitter<Client>();
-  @Output() public selectedClient = new EventEmitter<Client>();
   public pageSelection: Client[];
   public pageSize = 10;
   public currentPage = 0;
   public totalSize = 0;
 
   ngOnChanges(changes: SimpleChanges): void {
+    console.log(this.filteredClients);
     this.pageSelection = this.filteredClients;
   }
 
@@ -36,14 +35,9 @@ export class ClientsListComponent {
       endIndex = this.filteredClients.length;
     }
     this.pageSelection = this.filteredClients.slice(startIndex, endIndex);
-
   }
 
   onOpenDialog(client: Client) {
     this.openDialog.emit(client);
-  }
-
-  onAddRemoveClient(client: Client) {
-    this.selectedClient.emit(client);
   }
 }

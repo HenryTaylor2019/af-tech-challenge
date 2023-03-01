@@ -18,7 +18,9 @@ export class ClientsService {
           const clientsArray = [];
           for (const key in responseData) {
             if (responseData.hasOwnProperty(key)) {
-              responseData[key].isSelected = false;
+              responseData[key].map((client) => {
+                client.isSelected = false
+              })
               clientsArray.push(responseData[key]);
             }
           }

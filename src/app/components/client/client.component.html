@@ -3,7 +3,7 @@
     <div class="container__img-container"   [ngClass]="{'container__selected': client.isSelected}">
       <img
         class="container__img"
-        src="{{ client.picture.thumbnail }}"
+        src="{{ client.picture.large }}"
         alt="thumbnail"
       />
     </div>
@@ -22,24 +22,6 @@
           (click)="onModalClick(client)"
         >
           View Details
-        </button>
-
-        <button
-          mat-raised-button
-          color="primary"
-          (click)="onAddRemoveClient(client)"
-          *ngIf="!client.isSelected"
-        >
-          Add to List
-        </button>
-
-        <button
-          mat-raised-button
-          color="warn"
-          (click)="onAddRemoveClient(client)"
-          *ngIf="client.isSelected"
-        >
-          Remove
         </button>
       </div>
     </div>

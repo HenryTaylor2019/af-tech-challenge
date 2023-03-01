@@ -14,7 +14,6 @@ export class ClientsComponent {
   public isFetching: boolean;
   public clients: Client[] = [];
   public filteredClients: Client[] = [];
-  public selectedClients: Client[] = [];
   public resultsOptions = [5, 10, 15, 20, 25];
 
   constructor(
@@ -51,27 +50,6 @@ export class ClientsComponent {
         firstName.includes(searchQuery.toLowerCase()) ||
         lastName.includes(searchQuery.toLowerCase())
       );
-    });
-  }
-
-  onAddClientToList(selectedClient) {
-    this.filteredClients.map((client, i) => {
-      if (selectedClient.name === client.name) {
-        client.isSelected = true;
-        this.filteredClients.splice(i, 1);
-        this.selectedClients.unshift(client);
-      }
-    });
-  }
-
-
-  onRemoveClientFromList(selectedClient) {
-    this.selectedClients.map((client, i) => {
-      if (selectedClient.name === client.name) {
-        client.isSelected = false;
-        this.selectedClients.splice(i, 1);
-        this.clients.unshift(client);
-      }
     });
   }
 }

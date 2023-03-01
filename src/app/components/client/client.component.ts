@@ -9,13 +9,9 @@ import { Client } from 'src/app/models/client.model';
 export class ClientComponent {
   @Input() public client: Client;
   @Output() public openDialog = new EventEmitter<Client>();
-  @Output() public selectedClient = new EventEmitter<Client>();
 
   onModalClick(client: Client): void {
     this.openDialog.emit(client)
   }
 
-  onAddRemoveClient(clientName: Client): void {
-    this.selectedClient.emit(clientName);
-  }
 }

@@ -42,11 +42,4 @@ describe('ClientsListComponent', () => {
     component.onOpenDialog(mockClient);
     expect(component.openDialog.emit).toHaveBeenCalledWith(mockClient);
   });
-
-  it('should emit selectedClient event when onAddClientToList is called', () => {
-    spyOn(component.selectedClient, 'emit');
-    const client = mockClients[0];
-    component.onAddRemoveClient(client);
-    expect(component.selectedClient.emit).toHaveBeenCalledWith(client);
-  });
 });

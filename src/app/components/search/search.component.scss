@@ -6,12 +6,20 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
   padding-bottom: 1em;
   gap: 2em;
   padding: 2em;
   background: rgb(82, 82, 198);
   height: 100vh;
+
+  @media (max-width: 768px) {
+    height: auto;
+    justify-content: center;
+    width: 100vw;
+    padding: 0;
+    overflow: hidden;
+  }
 
   &__search {
     display: flex;

@@ -26,15 +26,6 @@
       <app-client
         [client]="client"
         (openDialog)="onOpenDialog($event)"
-        (selectedClient)="onAddRemoveClient($event)"
-      ></app-client>
-    </div>
-
-        <div *ngFor="let client of selectedClients">
-      <app-client
-        [client]="client"
-        (openDialog)="onOpenDialog($event)"
-        (selectedClient)="onAddRemoveClient($event)"
       ></app-client>
     </div>
   </div>
