@@ -9,11 +9,19 @@
     </ng-template>
   </div>
   <div class="container__loading" *ngIf="isFetching">
-    <h1 *ngIf="isFetching" >Loading</h1>
+    <h1 *ngIf="isFetching">Loading</h1>
   </div>
   <div class="container__card-list" *ngIf="!isFetching">
+    <mat-paginator
+      [length]="this.filteredClients.length"
+      [pageSizeOptions]="[5, 10, 20]"
+      [showFirstLastButtons]="true"
+      [pageSize]="5"
+      (page)="onPageChange($event)"
+    >
+    </mat-paginator>
 
-    <div *ngFor="let client of filteredClients">
+    <div *ngFor="let client of pageSlice">
       <app-client
         [client]="client"
         (openDialog)="onOpenDialog($event)"

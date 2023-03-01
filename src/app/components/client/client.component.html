@@ -1,6 +1,9 @@
 <div class="container">
   <div class="container__card">
-    <div class="container__img-container"   [ngClass]="{'container__selected': client.isSelected}">
+    <div
+      class="container__img-container"
+      [ngClass]="{ container__selected: client.isSelected }"
+    >
       <img
         class="container__img"
         src="{{ client.picture.large }}"

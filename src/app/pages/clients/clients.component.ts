@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Client } from 'src/app/models/client.model';
 import { ClientsService } from 'src/app/services/clients.service';
 import { DialogComponent } from 'src/app/components/dialog/dialog.component';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-clients',
@@ -14,7 +15,7 @@ export class ClientsComponent implements OnInit {
   public isFetching: boolean;
   public clients: Client[] = [];
   public filteredClients: Client[] = [];
-  public selectedClients = [];
+  public selectedClients: Client[] = [];
   public resultsOptions = [5, 10, 15, 20, 25];
 
   constructor(
@@ -36,6 +37,20 @@ export class ClientsComponent implements OnInit {
         })
       )
       .subscribe();
+  }
+
+  onPageChange(event: any ) {
+    // const event = data.event
+    // this.selectedClients = data.pageSlice
+
+    // const startIndex = event.pageIndex * event.pageSize;
+    // let endIndex = startIndex + event.pageSize;
+    // if (endIndex > this.filteredClients.length) {
+    //   endIndex = this.filteredClients.length;
+
+    // }
+    // this.filteredClients = this.filteredClients.slice(startIndex, endIndex);
+
   }
 
   onOpenDialog(client: Client) {
