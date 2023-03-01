@@ -16,8 +16,16 @@
       [isFetching]="isFetching"
       [filteredClients]="filteredClients"
       (openDialog)="onOpenDialog($event)"
-      (pageChange)="onPageChange($event)"
+      (selectedClient)="onAddClientToList($event)"
     ></app-clients-list>
+
+    <app-clients-list
+    *ngIf="selectedClients.length"
+    listType="selected"
+    [filteredClients]="selectedClients"
+    (openDialog)="onOpenDialog($event)"
+    (selectedClient)="onRemoveClientFromList($event)"
+  ></app-clients-list>
 
   </div>
 </div>

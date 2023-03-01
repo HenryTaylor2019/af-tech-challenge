@@ -1,21 +1,18 @@
 <div class="container">
   <div class="container__card">
-    <div
-      class="container__img-container"
-      [ngClass]="{ container__selected: client.isSelected }"
-    >
+    <div class="container__img-container"   [ngClass]="{'container__selected': client.isSelected}">
       <img
         class="container__img"
-        src="{{ client.picture.large }}"
+        src="{{ client.picture.thumbnail }}"
         alt="thumbnail"
       />
     </div>
 
     <div class="container__content">
-      <h4 class="container__name">
+      <h2 class="container__name">
         {{ client.name.first }}
         {{ client.name.last }}
-      </h4>
+      </h2>
 
       <div class="container__actions">
         <button
@@ -27,6 +24,23 @@
           View Details
         </button>
 
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="onAddRemoveClient(client)"
+          *ngIf="!client.isSelected"
+        >
+          Add to List
+        </button>
+
+        <button
+          mat-raised-button
+          color="warn"
+          (click)="onAddRemoveClient(client)"
+          *ngIf="client.isSelected"
+        >
+          Remove
+        </button>
       </div>
     </div>
   </div>

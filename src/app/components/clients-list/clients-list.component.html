@@ -1,24 +1,40 @@
 <div class="container">
-  <div class="container__header">
-    <h1>Available Clients</h1>
+  <div
+    class="container__header"
+    [ngClass]="{ container__selected: listType === 'selected' }"
+  >
+    <h1 *ngIf="listType === 'unselected'; else selected">Available Clients</h1>
+    <ng-template #selected>
+      <h1>Selected Clients</h1>
+    </ng-template>
   </div>
   <div class="container__loading" *ngIf="isFetching">
     <h1 *ngIf="isFetching">Loading</h1>
   </div>
   <div class="container__card-list" *ngIf="!isFetching">
     <mat-paginator
+    *ngIf="this.listType === 'unselected'"
       [length]="this.filteredClients.length"
       [pageSizeOptions]="[5, 10, 20]"
       [showFirstLastButtons]="true"
-      [pageSize]="5"
+      [pageSize]="this.pageSelection.length"
       (page)="onPageChange($event)"
     >
     </mat-paginator>
 
-    <div *ngFor="let client of pageSelction">
+    <div *ngFor="let client of pageSelection">
       <app-client
         [client]="client"
         (openDialog)="onOpenDialog($event)"
+        (selectedClient)="onAddRemoveClient($event)"
+      ></app-client>
+    </div>
+
+        <div *ngFor="let client of selectedClients">
+      <app-client
+        [client]="client"
+        (openDialog)="onOpenDialog($event)"
+        (selectedClient)="onAddRemoveClient($event)"
       ></app-client>
     </div>
   </div>
