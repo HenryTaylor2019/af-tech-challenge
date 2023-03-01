@@ -9,10 +9,9 @@
   align-items: flex-start;
   padding-bottom: 1em;
   gap: 2em;
-  border: 1px solid black;
   padding: 2em;
-  border-radius: 5px;
   background: rgb(82, 82, 198);
+  height: 100vh;
 
   &__search {
     display: flex;
@@ -21,15 +20,6 @@
     gap: 2em;
   }
 
-  &__input {
-    margin-top: -20px;
-    padding: 0.7em 0.5em;
-    min-width: 300px;
-  }
-
-  &__results-button {
-    width: 100%;
-  }
 
   &__params {
     display: flex;

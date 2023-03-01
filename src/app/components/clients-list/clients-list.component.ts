@@ -1,16 +1,6 @@
-import {
-  ChangeDetectorRef,
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-  ViewChild,
-} from '@angular/core';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { Observable } from 'rxjs';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 import { Client } from 'src/app/models/client.model';
-
 
 @Component({
   selector: 'app-clients-list',
@@ -19,18 +9,13 @@ import { Client } from 'src/app/models/client.model';
 })
 export class ClientsListComponent implements OnInit {
   @Input() public listType: string;
-  @Input() public pageSize: number
+  @Input() public isFetching: boolean;
   @Input() public clients: Client[] = [];
   @Input() public filteredClients: Client[] = [];
   @Output() public openDialog = new EventEmitter<Client>();
   @Output() public selectedClient = new EventEmitter<Client>();
-  @Output() public currentItemsToShow = new EventEmitter<Client[]>()
- 
-  ngOnInit() {
-  }
 
-  onPageChange($event) {
-    this.currentItemsToShow.emit($event)
+  ngOnInit() {
   }
 
   onOpenDialog(client: Client) {

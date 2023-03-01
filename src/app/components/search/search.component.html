@@ -1,8 +1,4 @@
 <div class="container">
-  <ng-template *ngIf="resultsValue > 50">
-    <p>Sorry. You can only request up to 50 clients</p>
-  </ng-template>
-
   <div class="container__params">
     <mat-form-field appearance="fill" subscriptSizing="dynamic" >
       <mat-label>Results</mat-label>
@@ -13,19 +9,6 @@
       </mat-select>
     </mat-form-field>
   </div>
-
-  <!-- <button
-    *ngIf="resultsOptions.length === 0"
-    class="container__results-button"
-    mat-raised-button
-    type="submit"
-    [disabled]="!resultsValue"
-    (click)="onUpdateResults()"
-  >
-    Show Results
-  </button> -->
-
-<!--  -->
 
   <div class="container__search" *ngIf="clients.length">
     <form class="example-form">

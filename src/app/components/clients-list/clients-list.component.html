@@ -8,13 +8,11 @@
       <h1>Selected Clients</h1>
     </ng-template>
   </div>
-  <div class="container__card-list">
-    <mat-paginator
-      (page)="onPageChange($event)"
-      [length]="10"
-      [pageSize]="pageSize"
-    >
-    </mat-paginator>
+  <div class="container__loading" *ngIf="isFetching">
+    <h1 *ngIf="isFetching" >Loading</h1>
+  </div>
+  <div class="container__card-list" *ngIf="!isFetching">
+
     <div *ngFor="let client of filteredClients">
       <app-client
         [client]="client"

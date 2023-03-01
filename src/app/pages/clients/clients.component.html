@@ -1,7 +1,5 @@
 <app-header></app-header>
 <div class="container">
-  <h2>Please select number of clients to display</h2>
-
   <div class="container__search">
     <app-search
       [clients]="clients"
@@ -11,16 +9,14 @@
     ></app-search>
   </div>
   
-  <div *ngIf="isFetching">
-    <h1>Loading</h1>
-  </div>
+
 
   <div class="container__clients-list">
     <app-clients-list
       *ngIf="filteredClients.length"
       listType="unselected"
       [clients]="clients"
-      [pageSize]="resultsToDisplay"
+      [isFetching]="isFetching"
       [filteredClients]="filteredClients"
       (openDialog)="onOpenDialog($event)"
       (selectedClient)="onAddClientToList($event)"

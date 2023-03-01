@@ -2,7 +2,7 @@
   background-color: aliceblue;
   border-radius: 5px;
   border: 0.5px solid black;
-  min-width: 50%;
+  min-width: 500px;
   box-shadow: 1px 1px 4px 0px rgba(0,0,0,0.07);
   overflow: hidden;
 
@@ -12,13 +12,19 @@
     color: white;
   }
 
+  &__loading {
+    display: flex;
+    justify-content: center;
+    padding-top: 1em;
+  }
+
   &__card-list {
     display: inline-flex;
     flex-direction: column;
     gap: 1em;
     padding: 1em;
     min-height: auto;
-    max-height: 40vh;
+    height: 70vh;
     overflow: scroll;
     overflow-x: hidden;
   }

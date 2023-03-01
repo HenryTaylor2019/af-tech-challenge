@@ -45,8 +45,8 @@ describe('ClientsListComponent', () => {
 
   it('should emit selectedClient event when onAddClientToList is called', () => {
     spyOn(component.selectedClient, 'emit');
-    const clientId = '1';
-    component.onAddClientToList(clientId);
-    expect(component.selectedClient.emit).toHaveBeenCalledWith(clientId);
+    const client = mockClients[0];
+    component.onAddRemoveClient(client);
+    expect(component.selectedClient.emit).toHaveBeenCalledWith(client);
   });
 });

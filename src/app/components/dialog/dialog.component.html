@@ -1,20 +1,23 @@
 <div class="container">
-
-    <img
-      class="container__img"
-      src="{{ clientData.picture.medium }}"
-      alt="thumbnail"
-    />
+  <img
+    class="container__img"
+    src="{{ clientData.picture.large }}"
+    alt="thumbnail"
+  />
 
   <div class="container__content">
     <h1 class="container__title">
-        {{ clientData.name.first }} {{ clientData.name.last }}
-      </h1>
-    <p><span>Location:</span> {{ clientData.location.city }}</p>
-    <p><span>Email:</span> {{ clientData.email}}</p>
-    <p><span>Phone:</span> {{ clientData.phone}}</p>
+      {{ clientData.name.first }} {{ clientData.name.last }}
+    </h1>
+    <p>
+      <span class="container__key">Location:</span>
+      {{ clientData.location.city }}
+    </p>
+    <p><span class="container__key">Email:</span> {{ clientData.email }}</p>
+    <p><span class="container__key">Phone:</span> {{ clientData.phone }}</p>
 
-      <button mat-raised-button color="primary" (click)="onCloseModal()">Close</button>
+    <button mat-raised-button color="primary" (click)="onCloseModal()">
+      Close
+    </button>
   </div>
-
 </div>
