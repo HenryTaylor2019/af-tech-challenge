@@ -27,23 +27,6 @@
           View Details
         </button>
 
-        <button
-          mat-raised-button
-          color="primary"
-          (click)="onAddRemoveClient(client)"
-          *ngIf="!client.isSelected"
-        >
-          Add to List
-        </button>
-
-        <button
-          mat-raised-button
-          color="warn"
-          (click)="onAddRemoveClient(client)"
-          *ngIf="client.isSelected"
-        >
-          Remove
-        </button>
       </div>
     </div>
   </div>
