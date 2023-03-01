@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { PageEvent } from '@angular/material/paginator';
 import { Client } from 'src/app/models/client.model';
 
 @Component({
@@ -10,7 +9,6 @@ import { Client } from 'src/app/models/client.model';
 export class ClientsListComponent implements OnInit {
   @Input() public listType: string;
   @Input() public isFetching: boolean;
-  @Input() public clients: Client[] = [];
   @Input() public filteredClients: Client[] = [];
   @Output() public openDialog = new EventEmitter<Client>();
   @Output() public selectedClient = new EventEmitter<Client>();

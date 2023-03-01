@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Client } from 'src/app/models/client.model';
-import { ClientsService } from 'src/app/services/clients.service';
 import { map } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
+import { Client } from 'src/app/models/client.model';
+import { ClientsService } from 'src/app/services/clients.service';
 import { DialogComponent } from 'src/app/components/dialog/dialog.component';
-import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-clients',
@@ -41,9 +40,7 @@ export class ClientsComponent implements OnInit {
 
   onOpenDialog(client: Client) {
     this.dialog.open(DialogComponent, {
-      data: client,
-      height: 'auto',
-      width: 'auto',
+      data: client
     });
   }
 

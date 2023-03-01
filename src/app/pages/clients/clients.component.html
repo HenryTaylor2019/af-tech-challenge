@@ -9,13 +9,10 @@
     ></app-search>
   </div>
   
-
-
   <div class="container__clients-list">
     <app-clients-list
       *ngIf="filteredClients.length"
       listType="unselected"
-      [clients]="clients"
       [isFetching]="isFetching"
       [filteredClients]="filteredClients"
       (openDialog)="onOpenDialog($event)"

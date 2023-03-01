@@ -8,6 +8,7 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
+    <p class="container__hint" *ngIf="!resultsValue">Select number to display results</p>
   </div>
 
   <div class="container__search" *ngIf="clients.length">

@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 
@@ -11,10 +11,7 @@ export class ClientsService {
   fetchClients(results?: number): any {
     return this.http
       .get<{ [key: string]: any }>(
-        `https://randomuser.me/api/?results=${results}&inc=name,location,picture,email,phone`,
-        {
-          // params: new HttpParams().set('pageSize', pages).set('results', results).set('page', 4)
-        }
+        `https://randomuser.me/api/?results=${results}&inc=name,location,picture,email,phone`
       )
       .pipe(
         map((responseData) => {
