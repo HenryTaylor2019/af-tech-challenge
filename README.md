@@ -1,6 +1,6 @@
 # ClientList
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.2.
+The Client Hub allows the user to filter through clients, see their details and add each client to a separate team list. 
 
 ## Development server
 
