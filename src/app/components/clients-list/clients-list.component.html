@@ -7,22 +7,35 @@
     <ng-template #selected>
       <h1>Selected Clients</h1>
     </ng-template>
+    <button mat-raised-button (click)="onDisplaySelected($event)" [disabled]="!selectedClients.length">{{ listType === 'unselected' ? 'See team View' : 'See available Clients' }}</button>
   </div>
   <div class="container__loading" *ngIf="isFetching">
     <h1 *ngIf="isFetching">Loading</h1>
   </div>
-  <div class="container__card-list" *ngIf="!isFetching">
+  <div class="container__card-list" *ngIf="listType === 'unselected'">
     <mat-paginator
-    *ngIf="this.listType === 'unselected'"
-      [length]="this.filteredClients.length"
+      [length]="filteredClients.length"
       [pageSizeOptions]="[5, 10, 20]"
       [showFirstLastButtons]="true"
-      [pageSize]="this.pageSelection.length"
+      [pageSize]="5"
       (page)="onPageChange($event)"
     >
     </mat-paginator>
-
+    <div>
+      
+    </div>
     <div *ngFor="let client of pageSelection">
+      <app-client
+        [client]="client"
+        (openDialog)="onOpenDialog($event)"
+      ></app-client>
+    </div>
+
+
+  </div>
+
+  <div class="container__card-list" *ngIf="listType === 'selected'">
+    <div *ngFor="let client of selectedClients">
       <app-client
         [client]="client"
         (openDialog)="onOpenDialog($event)"

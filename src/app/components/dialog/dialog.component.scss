@@ -20,4 +20,9 @@
     &__img {
         width: 250px;
     }
+
+    &__buttons {
+        display: flex;
+        gap: 1em
+    }
 }

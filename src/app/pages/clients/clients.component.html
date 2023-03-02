@@ -12,10 +12,12 @@
   <div class="container__clients-lists">
     <app-clients-list
       *ngIf="filteredClients.length"
-      listType="unselected"
+      [listType]="listType"
       [isFetching]="isFetching"
       [filteredClients]="filteredClients"
+      [selectedClients]="selectedClients"
       (openDialog)="onOpenDialog($event)"
+      (switchView)="onDisplaySelected($event)"
     ></app-clients-list>
   </div>
 </div>

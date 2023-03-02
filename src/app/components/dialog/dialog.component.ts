@@ -8,17 +8,22 @@ import { Client } from 'src/app/models/client.model';
   styleUrls: ['./dialog.component.scss'],
 })
 export class DialogComponent {
-  public clientData: Client;
+  public client: Client;
   public isSelectedClient: boolean;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: Client,
     public dialogRef: MatDialogRef<DialogComponent>
   ) {
-    this.clientData = data;
+    this.client = data;
   }
 
   onCloseModal() {
     this.dialogRef.close();
+  }
+
+  onAddRemoveClient(client: Client) {
+    this.onCloseModal()
+    client.isSelected = !client.isSelected;
   }
 }

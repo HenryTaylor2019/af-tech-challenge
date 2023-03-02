@@ -40,7 +40,7 @@ describe('DialogComponent', () => {
   });
 
   it('should set the clientData input correctly', () => {
-    expect(component.clientData).toEqual(mockClient);
+    expect(component.client).toEqual(mockClient);
   });
 
   it('should call dialogRef.close when onCloseModal is called', () => {

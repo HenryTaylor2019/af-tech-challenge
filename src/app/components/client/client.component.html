@@ -1,6 +1,12 @@
 <div class="container">
-  <div class="container__card">
-    <div class="container__img-container"   [ngClass]="{'container__selected': client.isSelected}">
+  <div
+    class="container__card"
+    [ngClass]="{ container__selected: client.isSelected }"
+  >
+    <div
+      class="container__img-container"
+      [ngClass]="{ container__selected: client.isSelected }"
+    >
       <img
         class="container__img"
         src="{{ client.picture.large }}"
@@ -13,9 +19,11 @@
         {{ client.name.first }}
         {{ client.name.last }}
       </h2>
+      <p *ngIf="client.isSelected">Client Selected</p>
 
       <div class="container__actions">
         <button
+          *ngIf="!client.isSelected"
           mat-raised-button
           color="accent"
           class="container__button"

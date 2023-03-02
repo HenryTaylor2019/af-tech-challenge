@@ -2,6 +2,8 @@ import {
   Component,
   EventEmitter,
   Input,
+  OnChanges,
+  OnInit,
   Output,
   SimpleChanges,
 } from '@angular/core';
@@ -13,19 +15,22 @@ import { Client } from 'src/app/models/client.model';
   templateUrl: './clients-list.component.html',
   styleUrls: ['./clients-list.component.scss'],
 })
-export class ClientsListComponent {
+export class ClientsListComponent implements OnInit, OnChanges {
   @Input() public listType: string;
   @Input() public isFetching: boolean;
   @Input() public filteredClients: Client[] = [];
+  @Input() public selectedClients: Client[] = [];
   @Output() public openDialog = new EventEmitter<Client>();
+  @Output() public switchView = new EventEmitter<Event>();
   public pageSelection: Client[];
-  public pageSize = 10;
-  public currentPage = 0;
-  public totalSize = 0;
+
+  constructor() {}
+  ngOnInit() {
+    this.pageSelection = [...this.filteredClients].slice(0, 5)
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.filteredClients);
-    this.pageSelection = this.filteredClients;
+    this.pageSelection = this.filteredClients
   }
 
   public onPageChange(event: PageEvent) {
@@ -39,5 +44,10 @@ export class ClientsListComponent {
 
   onOpenDialog(client: Client) {
     this.openDialog.emit(client);
+  }
+
+
+  onDisplaySelected(event: Event) {
+    this.switchView.emit(event)
   }
 }

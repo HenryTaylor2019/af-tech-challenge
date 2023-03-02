@@ -65,4 +65,9 @@
       justify-content: center;
     }
   }
+
+  &__selected {
+    background-color: #43437e;
+    color: white;
+  }
 }

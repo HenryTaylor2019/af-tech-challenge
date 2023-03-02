@@ -1,23 +1,32 @@
 <div class="container">
   <img
     class="container__img"
-    src="{{ clientData.picture.large }}"
+    src="{{ client.picture.large }}"
     alt="thumbnail"
   />
 
   <div class="container__content">
     <h1 class="container__title">
-      {{ clientData.name.first }} {{ clientData.name.last }}
+      {{ client.name.first }} {{ client.name.last }}
     </h1>
     <p>
       <span class="container__key">Location:</span>
-      {{ clientData.location.city }}
+      {{ client.location.city }}
     </p>
-    <p><span class="container__key">Email:</span> {{ clientData.email }}</p>
-    <p><span class="container__key">Phone:</span> {{ clientData.phone }}</p>
+    <p><span class="container__key">Email:</span> {{ client.email }}</p>
+    <p><span class="container__key">Phone:</span> {{ client.phone }}</p>
 
-    <button mat-raised-button color="primary" (click)="onCloseModal()">
-      Close
-    </button>
+    <div class="container__buttons">
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="onAddRemoveClient(client)"
+      >
+      {{ client.isSelected ? 'Remove from team' : 'Add to team' }}
+      </button>
+      <button mat-raised-button color="primary" (click)="onCloseModal()">
+        Close
+      </button>
+    </div>
   </div>
 </div>

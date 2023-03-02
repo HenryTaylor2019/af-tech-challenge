@@ -14,7 +14,9 @@ export class ClientsComponent {
   public isFetching: boolean;
   public clients: Client[] = [];
   public filteredClients: Client[] = [];
+  public selectedClients: Client[] = [];
   public resultsOptions = [5, 10, 15, 20, 25];
+  public listType = 'unselected';
 
   constructor(
     private clientsService: ClientsService,
@@ -22,7 +24,7 @@ export class ClientsComponent {
   ) {}
 
   onGetClientData(results: number): void {
-    this.isFetching = true
+    this.isFetching = true;
     this.clientsService
       .fetchClients(results)
       .pipe(
@@ -37,8 +39,13 @@ export class ClientsComponent {
 
   onOpenDialog(client: Client) {
     this.dialog.open(DialogComponent, {
-      data: client
+      data: client,
     });
+    this.dialog.afterAllClosed.subscribe(() => {
+      this.selectedClients = this.filteredClients.filter((client) => {
+        return client.isSelected;
+      });
+    })
   }
 
   filterBySearch(eventData): void {
@@ -51,5 +58,9 @@ export class ClientsComponent {
         lastName.includes(searchQuery.toLowerCase())
       );
     });
+  }
+
+  onDisplaySelected(event) {
+    this.listType === 'selected' ? this.listType = 'unselected' : this.listType = 'selected' 
   }
 }
