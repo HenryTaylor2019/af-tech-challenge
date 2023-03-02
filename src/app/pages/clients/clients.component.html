@@ -8,10 +8,8 @@
       (paramsFormData)="onGetClientData($event)"
     ></app-search>
   </div>
-
   <div class="container__clients-lists">
     <app-clients-list
-      *ngIf="filteredClients.length"
       [listType]="listType"
       [isFetching]="isFetching"
       [filteredClients]="filteredClients"

@@ -21,7 +21,7 @@ export class ClientsListComponent implements OnInit, OnChanges {
   @Input() public filteredClients: Client[] = [];
   @Input() public selectedClients: Client[] = [];
   @Output() public openDialog = new EventEmitter<Client>();
-  @Output() public switchView = new EventEmitter<Event>();
+  @Output() public switchView = new EventEmitter();
   public pageSelection: Client[];
 
   constructor() {}
@@ -29,8 +29,10 @@ export class ClientsListComponent implements OnInit, OnChanges {
     this.pageSelection = [...this.filteredClients].slice(0, 5)
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    this.pageSelection = this.filteredClients
+  ngOnChanges(): void {
+    this.pageSelection = [...this.filteredClients].filter((client)=> {
+      return !client.isSelected
+    })
   }
 
   public onPageChange(event: PageEvent) {
@@ -39,7 +41,9 @@ export class ClientsListComponent implements OnInit, OnChanges {
     if (endIndex > this.filteredClients.length) {
       endIndex = this.filteredClients.length;
     }
-    this.pageSelection = this.filteredClients.slice(startIndex, endIndex);
+    this.pageSelection = this.filteredClients.filter((client)=> {
+      return !client.isSelected
+    }).slice(startIndex, endIndex)
   }
 
   onOpenDialog(client: Client) {
@@ -47,7 +51,7 @@ export class ClientsListComponent implements OnInit, OnChanges {
   }
 
 
-  onDisplaySelected(event: Event) {
-    this.switchView.emit(event)
+  onDisplaySelected() {
+    this.switchView.emit()
   }
 }

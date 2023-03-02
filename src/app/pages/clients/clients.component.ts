@@ -45,11 +45,11 @@ export class ClientsComponent {
       this.selectedClients = this.filteredClients.filter((client) => {
         return client.isSelected;
       });
-    })
+    });
   }
 
   filterBySearch(eventData): void {
-    let searchQuery = eventData.target.value;
+    const searchQuery = eventData.target.value;
     this.filteredClients = this.clients.filter((client) => {
       let firstName = client.name.first.toLocaleLowerCase();
       let lastName = client.name.last.toLocaleLowerCase();
@@ -61,6 +61,8 @@ export class ClientsComponent {
   }
 
   onDisplaySelected(event) {
-    this.listType === 'selected' ? this.listType = 'unselected' : this.listType = 'selected' 
+    this.listType === 'selected'
+      ? (this.listType = 'unselected')
+      : (this.listType = 'selected');
   }
 }

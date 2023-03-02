@@ -8,6 +8,11 @@
       align-items: center;
       color: white;
       font-size: 40px;
+
+      @media (max-width: 768px) {
+        justify-content: center;
+
+      }
     }
   
     &__title {

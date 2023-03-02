@@ -11,7 +11,7 @@
   gap: 2em;
   padding: 2em;
   background: rgb(82, 82, 198);
-  height: 100vh;
+  height: 82vh;
 
   @media (max-width: 768px) {
     height: auto;
@@ -31,7 +31,6 @@
   &__hint {
     color: white;
   }
-
 
   &__params {
     display: flex;
